@@ -1,38 +1,140 @@
-.App {
+/* src/App.css */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.login-container, .register-container {
+  display: flex;
+  height: 100vh;
+  background: url('../public/Images/Login.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.login-left, .register-left {
+  flex: 1;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.6); /* Adding a dark overlay */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Adjusting the size of input fields */
+.login-left input, .register-left input {
+  width: 60%; /* Reduced width */
+  padding: 0.4rem; /* Reduced padding */
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.login-left h1, .register-left h1 {
+  margin-bottom: 1rem;
+  font-size: 5rem;
+}
+
+
+
+
+.login-left label, .register-left label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.login-left input, .register-left input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.login-left input::placeholder, .register-left input::placeholder {
+  color: #999;
+}
+
+.login-left button, .register-left button {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.login-left button:hover, .register-left button:hover {
+  background-color: #218838;
+}
+
+.login-left .forgot-password, .register-left .forgot-password {
+  color: #f1f1f1;
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
+.login-left .create-account, .register-left .create-account {
+  margin-top: 1rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.login-left .create-account a, .register-left .create-account a {
+  color: #007bff;
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.login-left .create-account a:hover, .register-left .create-account a:hover {
+  text-decoration: underline;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login-right, .register-right {
+  flex: 1;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6); /* Adding a dark overlay */
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.login-right h2, .register-right h2 {
+  margin-bottom: 1rem;
+  font-size: 3rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.social-login {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.social-login .fab {
+  margin: 0 0.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.social-login .fab:hover {
+  color: #ccc;
 }
