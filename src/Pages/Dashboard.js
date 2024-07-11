@@ -1,12 +1,18 @@
+// src/Pages/Dashboard.js
 import React from 'react';
-import '../App.css'; // Correct path to App.css
-import './Dashboard.css'; // Correct path to Dashboard.
+import './Dashboard.css';
+import { BrowserRouter as Navigate } from 'react-router-dom';
+
 
 const Dashboard = ({ user }) => {
+    if (!user) {
+        return <Navigate to="/login" />;
+    }
+
     return (
         <div>
-            <h1>Welcome, {user.username}!</h1>
-            <p>This is your dashboard.</p>
+            <h1>Welcome, {user.username}</h1>
+            {/* Add content and components for the dashboard here */}
         </div>
     );
 };

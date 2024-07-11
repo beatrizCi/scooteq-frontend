@@ -1,39 +1,85 @@
-.dashboard-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f0f2f5;
-}
+/* src/Pages/Dashboard.css */
 
-.dashboard-header {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+.dashboard-container {
+    font-family: 'Arial', sans-serif;
     color: #333;
 }
 
-.dashboard-content {
-    width: 80%;
-    max-width: 1200px;
-    background-color: #fff;
+.header {
+    background-size: cover;
     padding: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #fff;
+}
+
+.header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.header p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.rent-scooter {
+    padding: 2rem;
+    text-align: center;
+}
+
+.rent-scooter h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.step {
+    width: 22%;
+    padding: 1rem;
+    background: #f4f4f4;
     border-radius: 8px;
 }
 
-.dashboard-content h2 {
-    margin-top: 0;
-    color: #007bff;
+.insights {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+    background: #eaeaea;
 }
 
-.dashboard-content p {
-    color: #666;
-    line-height: 1.5;
+.insight {
+    text-align: center;
 }
 
-.dashboard-footer {
+.insight h3 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.fleet {
+    padding: 2rem;
+    text-align: center;
+}
+
+.fleet h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.scooters {
+    display: flex;
+    justify-content: space-around;
     margin-top: 2rem;
-    color: #999;
+}
+
+.scooter {
+    width: 22%;
+    padding: 1rem;
+    background: #f4f4f4;
+    border-radius: 8px;
 }

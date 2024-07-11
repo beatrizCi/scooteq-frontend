@@ -1,10 +1,11 @@
+// src/Pages/Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { MDBIcon } from 'mdb-react-ui-kit';
 import { useNavigate } from 'react-router-dom';
 import '../App.css'; 
 
-const Login = ({ onLogin, onShowRegister }) => {
+const Login = ({ onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
@@ -12,17 +13,14 @@ const Login = ({ onLogin, onShowRegister }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Submitting login form with:', { username, password });
         try {
             const response = await axios.post('http://localhost:5000/api/login', {
                 username,
                 password
             });
-            console.log('Response from backend:', response.data);
             onLogin(response.data);
             navigate('/dashboard'); // Redirect to dashboard
         } catch (error) {
-            console.error('Error logging in:', error);
             setMessage('Invalid credentials');
         }
     };
@@ -56,7 +54,7 @@ const Login = ({ onLogin, onShowRegister }) => {
                     <MDBIcon fab icon='github' size="2x" />
                     <MDBIcon fab icon='facebook' size="2x" />
                 </div>
-                <p className="create-account">Don't have an account? <a href="#!" onClick={onShowRegister}>Create an account</a></p>
+                <p className="create-account">Don't have an account? <a href="/register">Create an account</a></p>
             </div>
             <div className="login-right">
                 <h2>Welcome Back!</h2>
