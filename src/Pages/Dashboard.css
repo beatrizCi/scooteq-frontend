@@ -1,85 +1,158 @@
-/* src/Pages/Dashboard.css */
-
-.dashboard-container {
-    font-family: 'Arial', sans-serif;
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .header {
+    background-color: #fff;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .header h1 {
+    float: left;
+    margin: 0;
+  }
+  
+  .header nav {
+    float: right;
+  }
+  
+  .header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header nav ul li {
+    display: inline;
+    margin-left: 20px;
+  }
+  
+  .header nav ul li a {
+    text-decoration: none;
     color: #333;
-}
-
-.header {
-    background-size: cover;
-    padding: 2rem;
-    text-align: center;
+  }
+ 
+  .contact-button {
+    float: right;
+    margin-left: 20px;
+    background-color: #28a745;
     color: #fff;
-}
-
-.header h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.header p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-.rent-scooter {
-    padding: 2rem;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .hero {
+    background-size: cover;
+    padding: 100px 0;
+    color: #fff;
     text-align: center;
-}
-
-.rent-scooter h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.steps {
+  }
+  
+  .hero h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+  }
+  
+  .booking-form {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .booking-form input {
+    margin-right: 10px;
+    padding: 10px;
+    font-size: 1em;
+  }
+  
+  .booking-form button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .how-to-rent {
+    background-color: #f8f8f8;
+    padding: 60px 0;
+  }
+  
+  .how-to-rent h2 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .steps {
     display: flex;
     justify-content: space-around;
-    margin-top: 2rem;
-}
-
-.step {
-    width: 22%;
-    padding: 1rem;
-    background: #f4f4f4;
-    border-radius: 8px;
-}
-
-.insights {
+  }
+  
+  .step {
+    max-width: 200px;
+    text-align: center;
+  }
+  
+  .fleet {
+    padding: 60px 0;
+  }
+  
+  .fleet h2 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .scooters {
     display: flex;
     justify-content: space-around;
-    padding: 2rem;
-    background: #eaeaea;
-}
-
-.insight {
+  }
+  
+  .scooter {
+    max-width: 200px;
     text-align: center;
-}
-
-.insight h3 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.fleet {
-    padding: 2rem;
+  }
+  
+  .scooter img {
+    max-width: 100%;
+    border-radius: 10px;
+    height: 60%;
+  }
+  
+  .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
     text-align: center;
-}
-
-.fleet h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.scooters {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 2rem;
-}
-
-.scooter {
-    width: 22%;
-    padding: 1rem;
-    background: #f4f4f4;
-    border-radius: 8px;
-}
+  }
+  
+  .footer-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-menu ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  .footer-menu ul li a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .footer-contacts {
+    margin-top: 20px;
+  }
+  
