@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import axios from 'axios';
 import "./Dashboard.css";
 import { BrowserRouter as Navigate } from "react-router-dom";
 import {
@@ -10,15 +11,62 @@ import {
   MDBNavbarLink,
   MDBNavbarNav,
   MDBNavbarToggler,
-  MDBBtn,
 } from "mdb-react-ui-kit";
 
 const Dashboard = ({ user }) => {
-  const [showBasic, setShowBasic] = useState(false);
+    const [showBasic, setShowBasic] = useState(false);
+    const [scooters, setScooters] = useState([]);
+    const [selectedScooter, setSelectedScooter] = useState(null);
+    const [duration, setDuration] = useState('');
+    const [fare, setFare] = useState(null);
+  
+    // Fetch scooters data when the component mounts
+    useEffect(() => {
+      const fetchScooters = async () => {
+        try {
+          const response = await axios.get('http://localhost:5000/api/scooters');  // Ensure this URL is correct
+          setScooters(response.data);
+        } catch (error) {
+          console.error("Error fetching scooters:", error);
+        }
+      };
+      fetchScooters();
+    }, []);
+  
+    // Function to handle renting a scooter
+    const handleRentScooter = async () => {
+      if (!selectedScooter) { // Check if a scooter is selected
+        alert('Please select a scooter to rent.');
+        return;
+      }
+  
+      try {
+        const response = await axios.post('http://localhost:5000/api/rent-scooter', {  // Ensure this URL is correct
+          user_id: user.id,
+          scooter_id: selectedScooter.id,
+          start_time: new Date().toISOString()
+        });
+        alert(response.data.message);
+      } catch (error) {
+        console.error("Error renting scooter:", error);
+      }
+    };
+  
+    // Function to handle fare calculation
+    const handleCalculateFare = async () => {
+      try {
+        const response = await axios.post('http://localhost:5000/api/calculate-fare', { duration });  // Ensure this URL is correct
+        setFare(response.data.fare);
+      } catch (error) {
+        console.error("Error calculating fare:", error);
+      }
+    };
+  
+    // Redirect to login if user is not authenticated
+    if (!user) {
+      return <Navigate to="/login" />;
+    }
 
-  if (!user) {
-    return <Navigate to="/login" />;
-  }
   return (
     <div className="dashboard">
       <header>
@@ -40,13 +88,13 @@ const Dashboard = ({ user }) => {
                   </MDBNavbarLink>
                 </MDBNavbarItem>
                 <MDBNavbarItem>
-                  <MDBNavbarLink href="#">Features</MDBNavbarLink>
+                <MDBNavbarLink href="/fare-calculator">Calculate Fare</MDBNavbarLink>
                 </MDBNavbarItem>
                 <MDBNavbarItem>
                   <MDBNavbarLink href="#">Pricing</MDBNavbarLink>
                 </MDBNavbarItem>
                 <MDBNavbarItem>
-                  <MDBNavbarLink href="#">About</MDBNavbarLink>
+                <MDBNavbarLink href={`/user-profile/${user.id}`}>Profile</MDBNavbarLink>
                 </MDBNavbarItem>
               </MDBNavbarNav>
             </MDBCollapse>
@@ -72,16 +120,28 @@ const Dashboard = ({ user }) => {
       </header>
 
       <h1>Welcome, {user.username} find e-scooters nearby</h1>
-      <section className="hero">
-        <div className="container">
-          <form className="booking-form">
-            <input type="text" placeholder="Date & Location" />
-            <input type="text" placeholder="Scooter" />
-            <input type="text" placeholder="Name" />
-            <button type="submit" color='dark'>Submit</button>
-          </form>
-        </div>
-      </section>
+
+      <div className="container mt-5">
+        <h2>Rent a Scooter</h2>
+        <select onChange={(e) => setSelectedScooter(scooters.find(s => s.id === e.target.value))}>
+          <option value="">Select a scooter</option>
+          {scooters.map(scooter => (
+            <option key={scooter.id} value={scooter.id}>{scooter.model} - {scooter.location} ({scooter.status})</option>
+          ))}
+        </select>
+        <button onClick={handleRentScooter}>Rent Scooter</button>
+
+        <h2>Calculate Fare</h2>
+        <input
+          type="number"
+          placeholder="Duration (minutes)"
+          value={duration}
+          onChange={(e) => setDuration(e.target.value)}
+        />
+        <button onClick={handleCalculateFare}>Calculate</button>
+        {fare !== null && <p>Fare: ${fare}</p>}
+      </div>
+
       <section className="how-to-rent">
         <div className="container">
           <h2>How to rent a scooter?</h2>

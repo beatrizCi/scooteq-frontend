@@ -6,6 +6,8 @@ import Register from './Pages/Register';
 import Dashboard from './Pages/Dashboard';
 import RentalForm from './Pages/RentalForm';
 import RentalHistory from './Pages/RentalHistory';
+import FareCalculator from './Pages/FareCalculator';
+
 import './App.css';
 
 const App = () => {
@@ -24,6 +26,7 @@ const App = () => {
                 <Route path="/dashboard" element={user ? <Dashboard user={user} /> : <Navigate to="/login" />} />
                 <Route path="/rental-form" element={user ? <RentalForm user={user} /> : <Navigate to="/login" />} />
                 <Route path="/rental-history" element={user ? <RentalHistory user={user} /> : <Navigate to="/login" />} />
+                <Route path="/fare-calculator" element={user ? <FareCalculator /> : <Navigate to="/login" />} />
             </Routes>
         </div>
     );
