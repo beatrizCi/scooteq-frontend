@@ -48,7 +48,16 @@ body {
     padding: 10px 20px;
     cursor: pointer;
   }
-  
+  .dashboard .input-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.dashboard .input-section .rent-scooter,
+.dashboard .input-section .calculate-fare {
+    flex: 1;
+}
   .hero {
     background-size: cover;
     padding: 100px 0;

@@ -87,12 +87,13 @@ const Dashboard = ({ user }) => {
                     Home
                   </MDBNavbarLink>
                 </MDBNavbarItem>
+                <MDBNavbarLink href="#calculate-fare">Calculate Fare</MDBNavbarLink>
                 <MDBNavbarItem>
-                <MDBNavbarLink href="/fare-calculator">Calculate Fare</MDBNavbarLink>
                 </MDBNavbarItem>
+                <MDBNavbarLink href="#how-it-works">How it works</MDBNavbarLink>
                 <MDBNavbarItem>
-                  <MDBNavbarLink href="#">Pricing</MDBNavbarLink>
                 </MDBNavbarItem>
+                <MDBNavbarLink href="#vehicles">Vehicles</MDBNavbarLink>
                 <MDBNavbarItem>
                 <MDBNavbarLink href={`/user-profile/${user.id}`}>Profile</MDBNavbarLink>
                 </MDBNavbarItem>
@@ -121,47 +122,50 @@ const Dashboard = ({ user }) => {
 
       <h1>Welcome, {user.username} find e-scooters nearby</h1>
 
-      <div className="container mt-5">
-        <h2>Rent a Scooter</h2>
-        <select onChange={(e) => setSelectedScooter(scooters.find(s => s.id === e.target.value))}>
-          <option value="">Select a scooter</option>
-          {scooters.map(scooter => (
-            <option key={scooter.id} value={scooter.id}>{scooter.model} - {scooter.location} ({scooter.status})</option>
-          ))}
-        </select>
-        <button onClick={handleRentScooter}>Rent Scooter</button>
-
-        <h2>Calculate Fare</h2>
-        <input
-          type="number"
-          placeholder="Duration (minutes)"
-          value={duration}
-          onChange={(e) => setDuration(e.target.value)}
-        />
-        <button onClick={handleCalculateFare}>Calculate</button>
-        {fare !== null && <p>Fare: ${fare}</p>}
+      <div className="container mt-5 input-section">
+        <div className="rent-scooter">
+          <h2>Rent a Scooter</h2>
+          <select onChange={(e) => setSelectedScooter(scooters.find(s => s.id === e.target.value))}>
+            <option value="">Select a scooter</option>
+            {scooters.map(scooter => (
+              <option key={scooter.id} value={scooter.id}>{scooter.model} - {scooter.location} ({scooter.status})</option>
+            ))}
+          </select>
+          <button onClick={handleRentScooter}>Rent Scooter</button>
+        </div>
+        <div className="calculate-fare" id="calculate-fare">
+          <h2>Calculate Fare</h2>
+          <input
+            type="number"
+            placeholder="Duration (minutes)"
+            value={duration}
+            onChange={(e) => setDuration(e.target.value)}
+          />
+          <button onClick={handleCalculateFare}>Calculate</button>
+          {fare !== null && <p>Fare: ${fare}</p>}
+        </div>
       </div>
-
-      <section className="how-to-rent">
+      <section className="how-to-rent" id="how-it-works">
         <div className="container">
           <h2>How to rent a scooter?</h2>
           <div className="steps">
             <div className="step">
+            <MDBIcon fas icon="bicycle" size="2x" className="icon" />
               <h3>Choose vehicle</h3>
               <p>
                 From sleek and stylish models perfect for navigating crowded
-                city streets to rugged and durable scooters for off-road
-                adventures, we have something for everyone.
+                city streets or for off-road adventures.
               </p>
             </div>
             <div className="step">
-              <h3>Order Online</h3>
+            <MDBIcon fas icon="calculator" size="2x" className="icon" />
+              <h3>Fare Calculator</h3>
               <p>
-                Order your scooter easily online and get it delivered to your
-                doorstep.
+              Calculate the fare for your trip before you start riding to know the exact cost.
               </p>
             </div>
             <div className="step">
+            <MDBIcon fas icon="credit-card" size="2x" className="icon" />
               <h3>Easy Payments</h3>
               <p>
                 Enjoy easy and secure payment options for a hassle-free rental
@@ -169,17 +173,18 @@ const Dashboard = ({ user }) => {
               </p>
             </div>
             <div className="step">
-              <h3>24/7 Returns</h3>
+            <MDBIcon fas icon="leaf" size="2x" className="icon" />
+              <h3>Cleaner mobility</h3>
               <p>
-                We offer 24/7 returns so you can return the scooter at your
-                convenience.
+              Less local pollution and fewer climate-related emissions for cities.
+               
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="fleet">
+      <section className="fleet" id="vehicles">
         <div className="container">
           <h2>Our Fleet</h2>
           <div className="scooters">
